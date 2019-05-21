@@ -4,7 +4,7 @@ window.addEventListener("load", function () {
 	canvas.width = document.body.clientWidth;
 	const ctx = canvas.getContext("2d");
 	ctx.imageSmoothingEnabled = false;
-	function rand(maxLength = 0, maxInt = 9) {
+	function rand(maxInt = 9) {
 		return Math.floor(Math.random() * (maxInt + 1));
 	}
 	const colors = [
@@ -41,22 +41,11 @@ window.addEventListener("load", function () {
 		ctx.rect(x, y, 4, 4);
 		ctx.stroke();
 	}
-	// Noise
-	function noise() {
-		do {
-			const x = Number(rand(3, canvas.width));
-			const y = Number(rand(3, canvas.height));
-			if (x > canvas.width || y > canvas.height) continue;
-			point(ctx, x, y);
-		} while (false);
-		window.requestAnimationFrame(noise);
-	}
-	//window.requestAnimationFrame(noise);
 	// Wandering Line
-	function wanderLine(wx, wy, color = colors[rand(1, colors.length - 1)]) {
+	function wanderLine(wx, wy, color = colors[rand(colors.length - 1)]) {
 		var face = 0;
 		function getFace() {
-			var newFace = rand(1, 3);
+			var newFace = rand(3);
 			if (newFace === 0 && face === 2) return getFace();
 			if (newFace === 1 && face === 3) return getFace();
 			if (newFace === 2 && face === 0) return getFace();
@@ -70,7 +59,7 @@ window.addEventListener("load", function () {
 		}
 		function* wanderGen() {
 			const face = getFace();
-			const length = rand(2, 10);
+			const length = rand(10);
 			for (var total = 0; total < length; total++) {
 				//ctx.strokeStyle = colors[rand(1, 145)];
 				ctx.beginPath();
