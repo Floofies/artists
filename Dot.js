@@ -1,7 +1,7 @@
 window.addEventListener("load", function () {
 	const canvas = document.querySelector("#glcanvas");
 	canvas.height = document.height;
-	canvas.widfth = document.width;
+	canvas.width = document.width;
 	const ctx = canvas.getContext("2d");
 	ctx.imageSmoothingEnabled = false;
 	function rand(maxLength = 0, maxInt = 9) {
