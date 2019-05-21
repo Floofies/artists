@@ -1,5 +1,5 @@
 window.addEventListener("load", function () {
-	const canvas = document.querySelector("#glcanvas");
+	const canvas = document.querySelector("#glCanvas");
 	canvas.height = document.height;
 	canvas.width = document.width;
 	const ctx = canvas.getContext("2d");
